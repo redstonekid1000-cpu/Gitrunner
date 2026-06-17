@@ -397,7 +397,7 @@ fun EditorTab(
             }
         }
 
-        // Execution Engine Toggle Panel
+        // Execution Info Panel (100% Local Sandbox)
         Card(
             colors = CardDefaults.cardColors(containerColor = cardBg),
             shape = RoundedCornerShape(8.dp),
@@ -407,35 +407,24 @@ fun EditorTab(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(horizontal = 12.dp, vertical = 8.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Icon(
-                        imageVector = if (viewModel.useCloudSandbox) Icons.Default.Refresh else Icons.Default.Settings,
-                        contentDescription = "Mode indicator",
-                        tint = if (viewModel.useCloudSandbox) neonTeal else accentCyan,
-                        modifier = Modifier.padding(end = 6.dp)
-                    )
-                    Column {
-                        Text(
-                            text = if (viewModel.useCloudSandbox) "Cloud Python 3 Sandbox 🌐" else "Local Offline Engine 🔌",
-                            style = TextStyle(color = Color.White, fontWeight = FontWeight.Bold, fontSize = 12.sp)
-                        )
-                        Text(
-                            text = if (viewModel.useCloudSandbox) "Full PIP packages support + complete execution" else "Fast offline interpretation for simple scripts",
-                            style = TextStyle(color = Color.LightGray, fontSize = 10.sp)
-                        )
-                    }
-                }
-                Switch(
-                    checked = viewModel.useCloudSandbox,
-                    onCheckedChange = { viewModel.useCloudSandbox = it },
-                    colors = SwitchDefaults.colors(
-                        checkedThumbColor = neonTeal,
-                        checkedTrackColor = terminalGrid
-                    )
+                Icon(
+                    imageVector = Icons.Default.Settings,
+                    contentDescription = "Mode indicator",
+                    tint = neonTeal,
+                    modifier = Modifier.padding(end = 10.dp)
                 )
+                Column {
+                    Text(
+                        text = "Native Local Interpreter 🔌",
+                        style = TextStyle(color = Color.White, fontWeight = FontWeight.SemiBold, fontSize = 12.sp)
+                    )
+                    Text(
+                        text = "100% Secure on-device execution with local virtualenv package mapping.",
+                        style = TextStyle(color = Color.LightGray, fontSize = 10.sp)
+                    )
+                }
             }
         }
 

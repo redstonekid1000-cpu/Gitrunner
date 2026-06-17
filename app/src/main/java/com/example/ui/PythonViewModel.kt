@@ -206,16 +206,15 @@ class PythonViewModel(application: Application) : AndroidViewModel(application) 
         consoleErrors = ""
         
         val codeToRun = editorText
-        val cloudMode = useCloudSandbox
         val startTime = System.currentTimeMillis()
 
         viewModelScope.launch {
             appendConsoleOutput("🚀 Terminal Console Session Initiated.\n")
             appendConsoleOutput("📂 Executing File: ${fileNameInput}\n")
-            appendConsoleOutput("⚙️ Mode: ${if (cloudMode) "Cloud Python 3 Sandbox ️🌐" else "Local Offline Engine"}\n")
+            appendConsoleOutput("⚙️ Mode: Native On-Device Offline Engine\n")
             appendConsoleOutput("--------------------------------------------\n")
 
-            val result = repository.executeScript(codeToRun, cloudMode)
+            val result = repository.executeScript(codeToRun, false)
             
             executionTime = System.currentTimeMillis() - startTime
             
