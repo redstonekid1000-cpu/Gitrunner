@@ -1,0 +1,6 @@
+{
+  "name": "Python Runner",
+  "description": "A fully-featured Python development environment on your mobile device, containing an interactive code editor, real-time Python execution console with input support, and a complete Pip library manager with virtual prebuilt repo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
